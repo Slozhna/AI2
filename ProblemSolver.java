@@ -1,138 +1,88 @@
-public class ProblemSolver
-{
-	public static boolean is_solution_available(int[] check_array)
-	{
-		int inv = 0;
 
-		for (int i = 0; i < 9; i++)
-		{
-			if (check_array[i] > 0)
-			{
-				for (int j = 0; j < i; j++)
-				{
-					if (check_array[j] > check_array[i])
-					{
-						inv += 1;
-					}
-				}
-			}
-		}
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-		for (int i = 0; i < 9; i++)
-		{
-			if (check_array[i] == 0)
-			{
-				inv += 1 + i / 3;
-			}
-		}
+public class ProblemSolver {
 
-		if (inv % 2 != 0)
-		{
-			return false;
-		} else {
-			return true;
-		}
-	}
+    public static boolean is_solution_available(int[] check_array) {
+        int inv = 0;
 
-	public static void main(String[] args)
-	{
-		// Numbers to be adjusted if the debug toggle is present, as components
-		// of args will be in different locations if it is.
-		int searchTypeDebug = 0;
-		int eightPuzzleDebug = 1;
-		boolean debug = false;
+        for (int i = 0; i < 9; i++) {
+            if (check_array[i] > 0) {
+                for (int j = 0; j < i; j++) {
+                    if (check_array[j] > check_array[i]) {
+                        inv += 1;
+                    }
+                }
+            }
+        }
 
-		// Print out correct usage and end the program if there aren't any
-		// parameters
-		if (args.length < 1)
-		{
-			printUsage();
-		}
+        for (int i = 0; i < 9; i++) {
+            if (check_array[i] == 0) {
+                inv += 1 + i / 3;
+            }
+        }
 
-		// Check for debug toggle
-		if (args[0].equals("-d"))
-		{
-			searchTypeDebug = 1;
-			eightPuzzleDebug = 2;
-			debug = true;
-			System.out.println("Search Type passed in: "
-					+ args[searchTypeDebug].toLowerCase());
-		}
+        if (inv % 2 != 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-		String searchType = args[searchTypeDebug].toLowerCase();
+    public static void main(String[] args) throws IOException {
+        System.out.println("This lab is done by Kaporin (is3406) and Korobova (is3206)");
+        System.out.println("Choose algorithm:\n\r 1.DFS\n\r 2.BFS\n\r 3.ASO\n\r 4.ASM\n\r");
+        // Numbers to be adjusted if the debug toggle is present, as components
+        // of args will be in different locations if it is.
+        int searchTypeDebug = 0;
+        //int eightPuzzleDebug = 1;
+        int eightPuzzleDebug = 0;
+        int i = 0;
+        boolean debug = false;
 
-		if (args.length > 2) // We will run with 8puzzle
-		{
-			int[] startingStateBoard = dispatchEightPuzzle(args,
-					eightPuzzleDebug);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            i = Integer.parseInt(br.readLine());
+        } catch (NumberFormatException nfe) {
+            System.err.println("Invalid Format!");
+        }
+        //String searchType = args[searchTypeDebug].toLowerCase();
+        int searchType = i;
 
-			if (is_solution_available(startingStateBoard))
-			{
-					System.out.println("Solution is available for inputed array!");
-			} else {
-					System.out.println("Solution isn't (!!!) available for inputed array!");
-			}
+        int[] startingStateBoard = dispatchEightPuzzle(args,
+                eightPuzzleDebug);
 
-			if (searchType.equals("dfs")) // Use DFSearch.java
-			{
-				DFSearch.search(startingStateBoard, debug);
-			}
-			else if (searchType.equals("bfs")) // Use BFSearch.java
-			{
-				BFSearch.search(startingStateBoard, debug);
-			}
-			// Use AStarSearch.java with number out of place
-			else if (searchType.equals("aso"))
-			{
-				AStarSearch.search(startingStateBoard, debug, 'o');
-			}
-			// Use AStarSearch.java with Manhattan Distance
-			else if (searchType.equals("asm"))
-			{
-				AStarSearch.search(startingStateBoard, debug, 'm');
-			}
-			// An invalid searchType has been passed in. Print correct usage and
-			// end the program.
-			else
-			{
-				printUsage();
-			}
-		}
+        if (is_solution_available(startingStateBoard)) {
+            System.out.println("Solution is available for inputed array!");
+        } else {
+            System.out.println("Solution isn't (!!!) available for inputed array!");
+            return;
+        }
 
-		else
-		// We will run with fwgc
-		{
-			if (searchType.equals("dfs")) // Use DFSearch.java
-			{
-				DFSearch.search(debug);
-			}
-			else if (searchType.equals("bfs")) // Use BFSearch.java
-			{
-				BFSearch.search(debug);
-			}
-			else
-			{
-				printUsage();
-			}
-		}
-	}
+        if (searchType == 1) // Use DFSearch.java
+        {
+            DFSearch.search(startingStateBoard, debug);
+        } else if (searchType == 2) // Use BFSearch.java
+        {
+            BFSearch.search(startingStateBoard, debug);
+        } // Use AStarSearch.java with number out of place
+        else if (searchType == 3) {
+            AStarSearch.search(startingStateBoard, debug, 'o');
+        } // Use AStarSearch.java with Manhattan Distance
+        else if (searchType == 4) {
+            AStarSearch.search(startingStateBoard, debug, 'm');
+        }
+    }
 
-	// Helper method to print the correct usage and end the program
-	private static void printUsage()
-	{
-		System.out.println("Usage: ./Main <searchType> [Initial Puzzle State]");
-		System.exit(-1);
-	}
-
-	// Helper method to build our initial 8puzzle state passed in through args
-	private static int[] dispatchEightPuzzle(String[] a, int d)
-	{
-		int[] initState = new int[9];
-		// i -> loop counter
-		for (int i = d; i < a.length; i++)
-		{
-			initState[i - d] = Integer.parseInt(a[i]);
-		}
-		return initState;
-	}
+    // Helper method to build our initial 8puzzle state passed in through args
+    private static int[] dispatchEightPuzzle(String[] a, int d) {
+        int[] initState = new int[9];
+        // i -> loop counter
+        for (int i = d; i < a.length; i++) {
+            initState[i - d] = Integer.parseInt(a[i]);
+        }
+        return initState;
+    }
 }
