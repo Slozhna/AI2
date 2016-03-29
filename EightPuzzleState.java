@@ -1,18 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * 
- * EightPuzzleState defines a state for the 8puzzle problem. The board is always
- * represented by a single dimensioned array, we attempt to provide the illusion
- * that the state representation is 2 dimensional and this works very well. In
- * terms of the actual tiles, '0' represents the hole in the board, and 0 is
- * treated special when generating successors. We do not treat '0' as a tile
- * itself, it is the "hole" in the board (as we refer to it herein)
- * 
- * @author Michael Langston && Gabe Ferrer
- * 
- */
 public class EightPuzzleState implements State
 {
 
@@ -27,7 +15,7 @@ public class EightPuzzleState implements State
 
 	/**
 	 * Constructor for EightPuzzleState
-	 * 
+	 *
 	 * @param board
 	 *            - the board representation for the new state to be constructed
 	 */
@@ -105,7 +93,7 @@ public class EightPuzzleState implements State
 
 	/*
 	 * Attempt to locate the "0" spot on the current board
-	 * 
+	 *
 	 * @return the index of the "hole" (or 0 spot)
 	 */
 	private int getHole()
@@ -124,7 +112,7 @@ public class EightPuzzleState implements State
 
 	/**
 	 * Getter for the outOfPlace value
-	 * 
+	 *
 	 * @return the outOfPlace h(n) value
 	 */
 	public int getOutOfPlace()
@@ -134,7 +122,7 @@ public class EightPuzzleState implements State
 
 	/**
 	 * Getter for the Manhattan Distance value
-	 * 
+	 *
 	 * @return the Manhattan Distance h(n) value
 	 */
 	public int getManDist()
@@ -159,7 +147,7 @@ public class EightPuzzleState implements State
 	 * Is thought about in terms of NO MORE THAN 4 operations. Can slide tiles
 	 * from 4 directions if hole is in middle Two directions if hole is at a
 	 * corner three directions if hole is in middle of a row
-	 * 
+	 *
 	 * @return an ArrayList containing all of the successors for that state
 	 */
 	@Override
@@ -214,7 +202,7 @@ public class EightPuzzleState implements State
 
 	/**
 	 * Check to see if the current state is the goal state.
-	 * 
+	 *
 	 * @return - true or false, depending on whether the current state matches
 	 *         the goal
 	 */
@@ -247,7 +235,7 @@ public class EightPuzzleState implements State
 
 	/**
 	 * Overloaded equals method to compare two states.
-	 * 
+	 *
 	 * @return true or false, depending on whether the states are equal
 	 */
 	@Override
@@ -264,7 +252,7 @@ public class EightPuzzleState implements State
 
 	/**
 	 * Getter to return the current board array
-	 * 
+	 *
 	 * @return the curState
 	 */
 	public int[] getCurBoard()

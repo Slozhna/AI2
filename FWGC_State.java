@@ -1,17 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * FWGC_State defines a state for the classic Farmer,Wolf,Goat,Cabbage problem.
- * invalidStates are stored, not generated. Generated states are checked for
- * validity against the invalidStates 2D-array, and removed from the successors
- * array(list) if invalid. A state is defined as a 4-bit string (encapsulated by
- * the Pos enum) which represents whether a particular entity (in the order
- * FWGC) is on the west or east side of the river.
- * 
- * @author Michael Langston && Gabe Ferrer
- * 
- */
 public class FWGC_State implements State
 {
 	// constant for the goal state
@@ -43,7 +32,7 @@ public class FWGC_State implements State
 
 	/**
 	 * Polymorphic constructor #1
-	 * 
+	 *
 	 * @param fPos
 	 *            - Farmer position
 	 * @param wPos
@@ -61,7 +50,7 @@ public class FWGC_State implements State
 
 	/**
 	 * Polymorphic constructor #2
-	 * 
+	 *
 	 * @param stateArr
 	 *            - Array containing a state, which has all four positions
 	 */
@@ -82,7 +71,7 @@ public class FWGC_State implements State
 
 	/**
 	 * Generate all possible successors to the current state.
-	 * 
+	 *
 	 * Will trim out successor states that match a state description in the
 	 * "invalid states" array.
 	 */
@@ -194,7 +183,7 @@ public class FWGC_State implements State
 
 	/**
 	 * Check to see if the current state is the goal state.
-	 * 
+	 *
 	 * @return - true or false, depending on whether the current state matches
 	 *         the goal
 	 */
@@ -241,7 +230,7 @@ public class FWGC_State implements State
 
 	/**
 	 * Overloaded equals method to compare two states.
-	 * 
+	 *
 	 * @return true or false, depending on whether the states are equal
 	 */
 	@Override

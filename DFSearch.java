@@ -1,20 +1,10 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-/**
- * Defines a Depth-First search to be performed on a qualifying puzzle.
- * Currently supports 8puzzle and FWGC.
- * 
- * @author Michael Langston && Gabe Ferrer
- */
 public class DFSearch
 {
 	/**
 	 * Initialization function for 8puzzle DFSearch
-	 * 
-	 * @param board
-	 *            - The starting state, represented as a linear array of length
-	 *            9 forming 3 meta-rows.
 	 */
 	public static void search(int[] board, boolean d)
 	{
@@ -64,7 +54,7 @@ public class DFSearch
 
 	/**
 	 * Performs a DFSearch using q as the search space
-	 * 
+	 *
 	 * @param s
 	 *            - A SearchNode queue to be populated and searched
 	 */

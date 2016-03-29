@@ -3,20 +3,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-/**
- * Defines an A* search to be performed on a qualifying puzzle. Currently
- * supports 8puzzle and FWGC.
- * 
- * @author Michael Langston && Gabe Ferrer
- */
 public class AStarSearch
 {
 	/**
 	 * Initialization function for 8puzzle A*Search
-	 * 
-	 * @param board
-	 *            - The starting state, represented as a linear array of length
-	 *            9 forming 3 meta-rows.
 	 */
 	public static void search(int[] board, boolean d, char heuristic)
 	{
@@ -24,17 +14,15 @@ public class AStarSearch
 		Queue<SearchNode> q = new LinkedList<SearchNode>();
 		q.add(root);
 
-		int searchCount = 1; // counter for number of iterations
+		int searchCount = 1; 																												// counter for number of iterations
 
-		while (!q.isEmpty()) // while the queue is not empty
+		while (!q.isEmpty()) 																												// while the queue is not empty
 		{
 			SearchNode tempNode = (SearchNode) q.poll();
 
-			// if the tempNode is not the goal state
-			if (!tempNode.getCurState().isGoal())
+			if (!tempNode.getCurState().isGoal())																			// if the tempNode is not the goal state
 			{
-				// generate tempNode's immediate successors
-				ArrayList<State> tempSuccessors = tempNode.getCurState()
+				ArrayList<State> tempSuccessors = tempNode.getCurState()								// generate tempNode's immediate successors
 						.genSuccessors();
 				ArrayList<SearchNode> nodeSuccessors = new ArrayList<SearchNode>();
 

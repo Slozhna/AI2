@@ -1,14 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * 
- * State interface from which problem states inherit. Defines a method to check
- * if the current state is a goal, generate successors, and find the cost to
- * come to the current state.
- * 
- * @author Michael Langston && Gabe Ferrer
- * 
- */
 public interface State
 {
 	// determine if current state is goal

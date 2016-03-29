@@ -1,15 +1,39 @@
 public class ProblemSolver
 {
+	public static boolean is_solution_available(int[] check_array)
+	{
+		int inv = 0;
 
-	/*
-	 * We expect arguments in the form:
-	 * 
-	 * ./ProblemSolver <-d> dfs/bfs/aso/asm <initial state> <optional parameter>
-	 * 
-	 * Example: ./ProblemSolver dfs 0 1 2 3 4 5 6 7 8
-	 * 
-	 * See Readme for more information.
-	 */
+		for (int i = 0; i < 9; i++)
+		{
+			if (check_array[i] > 0)
+			{
+				for (int j = 0; j < i; j++)
+				{
+					if (check_array[j] > check_array[i])
+					{
+						inv += 1;
+					}
+				}
+			}
+		}
+
+		for (int i = 0; i < 9; i++)
+		{
+			if (check_array[i] == 0)
+			{
+				inv += 1 + i / 3;
+			}
+		}
+
+		if (inv % 2 != 0)
+		{
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	public static void main(String[] args)
 	{
 		// Numbers to be adjusted if the debug toggle is present, as components
@@ -41,6 +65,13 @@ public class ProblemSolver
 		{
 			int[] startingStateBoard = dispatchEightPuzzle(args,
 					eightPuzzleDebug);
+
+			if (is_solution_available(startingStateBoard))
+			{
+					System.out.println("Solution is available for inputed array!");
+			} else {
+					System.out.println("Solution isn't (!!!) available for inputed array!");
+			}
 
 			if (searchType.equals("dfs")) // Use DFSearch.java
 			{

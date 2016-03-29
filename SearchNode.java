@@ -1,11 +1,3 @@
-/**
- * 
- * Class to represent a SearchNode. This will be a wrapper for a State, and
- * track the cost to get to that state and the state's parent node.
- * 
- * @author Michael Langston && Gabe Ferrer
- * 
- */
 public class SearchNode
 {
 
@@ -17,7 +9,7 @@ public class SearchNode
 
 	/**
 	 * Constructor for the root SearchNode
-	 * 
+	 *
 	 * @param s
 	 *            the state passed in
 	 */
@@ -32,7 +24,7 @@ public class SearchNode
 
 	/**
 	 * Constructor for all other SearchNodes
-	 * 
+	 *
 	 * @param prev
 	 *            the parent node
 	 * @param s
@@ -76,7 +68,7 @@ public class SearchNode
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the heuristic cost
 	 */
 	public double getHCost()
@@ -85,7 +77,7 @@ public class SearchNode
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the f(n) cost for A*
 	 */
 	public double getFCost()

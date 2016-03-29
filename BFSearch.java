@@ -3,21 +3,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-/**
- * Defines a Bredth-First search to be performed on a qualifying puzzle.
- * Currently supports 8puzzle and FWGC.
- * 
- * @author Michael Langston && Gabe Ferrer
- */
 public class BFSearch
 {
-	/**
-	 * Initialization function for 8puzzle BFSearch
-	 * 
-	 * @param board
-	 *            - The starting state, represented as a linear array of length
-	 *            9 forming 3 meta-rows.
-	 */
 	public static void search(int[] board, boolean d)
 	{
 		SearchNode root = new SearchNode(new EightPuzzleState(board));
@@ -28,9 +15,6 @@ public class BFSearch
 		performSearch(queue, d);
 	}
 
-	/**
-	 * Initialization function for FWGC BFSearch
-	 */
 	public static void search(boolean d)
 	{
 		SearchNode root = new SearchNode(new FWGC_State());
@@ -66,7 +50,7 @@ public class BFSearch
 
 	/**
 	 * Performs a BFSearch using q as the search space
-	 * 
+	 *
 	 * @param q
 	 *            - A SearchNode queue to be populated and searched
 	 */
