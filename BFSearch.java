@@ -15,14 +15,6 @@ public class BFSearch {
         performSearch(queue, d);
     }
 
-    public static void search(boolean d) {
-        SearchNode root = new SearchNode(new FWGC_State());
-        Queue<SearchNode> queue = new LinkedList<SearchNode>();
-
-        queue.add(root);
-
-        performSearch(queue, d);
-    }
 
     /*
 	 * Helper method to check to see if a SearchNode has already been evaluated.
