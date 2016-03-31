@@ -33,7 +33,7 @@ public class ProblemSolver {
 
     public static void main(String[] args) throws IOException {
         System.out.println("This lab is done by Kaporin (is3406) and Korobova (is3206)");
-        System.out.println("Choose algorithm:\n\r 1.DFS\n\r 2.BFS\n\r 3.ASO\n\r 4.ASM\n\r");
+        System.out.println("Choose algorithm:\n\r 1.BFS\n\r 2.ASO\n\r 3.ASM\n\r");
         // Numbers to be adjusted if the debug toggle is present, as components
         // of args will be in different locations if it is.
         int searchTypeDebug = 0;
@@ -60,18 +60,15 @@ public class ProblemSolver {
             System.out.println("Solution isn't (!!!) available for inputed array!");
             return;
         }
-
-        if (searchType == 1) // Use DFSearch.java
-        {
-            DFSearch.search(startingStateBoard, debug);
-        } else if (searchType == 2) // Use BFSearch.java
+        
+        if (searchType == 1) // Use BFSearch.java
         {
             BFSearch.search(startingStateBoard, debug);
         } // Use AStarSearch.java with number out of place
-        else if (searchType == 3) {
+        else if (searchType == 2) {
             AStarSearch.search(startingStateBoard, debug, 'o');
         } // Use AStarSearch.java with Manhattan Distance
-        else if (searchType == 4) {
+        else if (searchType == 3) {
             AStarSearch.search(startingStateBoard, debug, 'm');
         }
     }

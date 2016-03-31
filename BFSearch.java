@@ -56,6 +56,7 @@ public class BFSearch
 	 */
 	public static void performSearch(Queue<SearchNode> q, boolean d)
 	{
+		long tStart = System.currentTimeMillis();
 		int searchCount = 1; // counter for number of iterations
 
 		while (!q.isEmpty()) // while the queue is not empty
@@ -122,7 +123,11 @@ public class BFSearch
 					System.out.println("The number of nodes examined: "
 							+ searchCount);
 				}
+				long tEnd = System.currentTimeMillis();
+				long tDelta = tEnd - tStart;
+				double elapsedSeconds = tDelta / 1000.0;
 
+				System.out.println("Time elapsed: " + elapsedSeconds + "s.");
 				System.exit(0);
 			}
 		}

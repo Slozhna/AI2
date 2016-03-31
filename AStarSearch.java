@@ -10,6 +10,7 @@ public class AStarSearch
 	 */
 	public static void search(int[] board, boolean d, char heuristic)
 	{
+		long tStart = System.currentTimeMillis();
 		SearchNode root = new SearchNode(new EightPuzzleState(board));
 		Queue<SearchNode> q = new LinkedList<SearchNode>();
 		q.add(root);
@@ -131,7 +132,11 @@ public class AStarSearch
 					System.out.println("The number of nodes examined: "
 							+ searchCount);
 				}
+				long tEnd = System.currentTimeMillis();
+				long tDelta = tEnd - tStart;
+				double elapsedSeconds = tDelta / 1000.0;
 
+				System.out.println("Time elapsed: " + elapsedSeconds + "s.");
 				System.exit(0);
 			}
 		}
